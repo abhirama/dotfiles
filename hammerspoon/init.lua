@@ -25,6 +25,43 @@ else
 end
 
 --------------------------------------------------
+-- Hyper + Space: move window to next monitor AND focus/raise it
+--------------------------------------------------
+
+hs.hotkey.bind(hyper, "space", function()
+  local win = hs.window.focusedWindow()
+  if not win then
+    hs.alert.show("No active window")
+    return
+  end
+
+  local currentScreen = win:screen()
+  local nextScreen = currentScreen:next()
+  if not nextScreen then return end
+
+  -- Move to next screen, keep relative position & size
+  win:moveToScreen(nextScreen, false, true)
+
+  -- Explicitly bring it to the front & keep focus
+  win:raise()
+  win:focus()
+end)
+
+--------------------------------------------------
+-- Hyper + F : Maximize current window
+--------------------------------------------------
+
+hs.hotkey.bind(hyper, "f", function()
+  local win = hs.window.focusedWindow()
+  if not win then
+    hs.alert.show("No active window")
+    return
+  end
+
+  win:maximize()
+end)
+
+--------------------------------------------------
 -- Optional: simple reload hotkey for development
 --------------------------------------------------
 hs.hotkey.bind(hyper, "r", function()
