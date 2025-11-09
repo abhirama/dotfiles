@@ -1,0 +1,19 @@
+# Ignore all Spoons (plugins) — they can be reinstalled easily
+Spoons/
+
+# Logs and cache
+*.log
+.cache/
+crash/
+
+# Temporary or local scripts
+local.lua
+secrets.lua
+
+# Backup files from editors
+*.swp
+*.bak
+*~
+
+# Optional: exclude screenshots, experimental scripts, etc.
+sandbox/
