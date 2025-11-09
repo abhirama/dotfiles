@@ -48,26 +48,28 @@ hs.hotkey.bind(hyper, "space", function()
 end)
 
 --------------------------------------------------
--- Hyper + F : Maximize current window
---------------------------------------------------
-
-hs.hotkey.bind(hyper, "f", function()
-  local win = hs.window.focusedWindow()
-  if not win then
-    hs.alert.show("No active window")
-    return
-  end
-
-  win:maximize()
-end)
-
---------------------------------------------------
 -- Optional: simple reload hotkey for development
 --------------------------------------------------
 hs.hotkey.bind(hyper, "r", function()
   hs.reload()
   hs.alert.show("Hammerspoon reloaded")
 end)
+
+--------------------------------------------------
+-- Miro Windows Manager: Hyper + Arrows to snap
+-- and Hyper + Return to fullscreen
+--------------------------------------------------
+
+hs.loadSpoon("MiroWindowsManager")
+
+spoon.MiroWindowsManager:bindHotkeys({
+  up         = { hyper, "up" },     -- top half
+  down       = { hyper, "down" },   -- bottom half
+  left       = { hyper, "left" },   -- left half
+  right      = { hyper, "right" },  -- right half
+  fullscreen = { hyper, "f" },      -- full screen
+})
+
 
 --------------------------------------------------
 -- Confirmation on load
