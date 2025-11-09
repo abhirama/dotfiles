@@ -70,6 +70,23 @@ spoon.MiroWindowsManager:bindHotkeys({
   fullscreen = { hyper, "f" },      -- full screen
 })
 
+--------------------------------------------------
+-- Hyper + Return: Toggle Raycast Spotlight
+--------------------------------------------------
+
+hs.hotkey.bind(hyper, "return", function()
+  local app = hs.application.find("Raycast")
+
+  -- If Raycast is already running, just trigger the shortcut.
+  if app then
+    -- This simulates Raycast’s own hotkey (default: Cmd + Space).
+    hs.eventtap.keyStroke({ "alt" }, "space")
+  else
+    -- If Raycast isn’t running yet, launch it.
+    hs.application.launchOrFocus("Raycast")
+  end
+end)
+
 
 --------------------------------------------------
 -- Confirmation on load
