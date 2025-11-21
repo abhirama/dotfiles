@@ -89,6 +89,15 @@ end)
 
 
 --------------------------------------------------
+-- Hyper + V: Paste into fields where paste is disabled
+-- Types clipboard contents character by character
+--------------------------------------------------
+
+hs.hotkey.bind(hyper, "v", function()
+  hs.eventtap.keyStrokes(hs.pasteboard.getContents())
+end)
+
+--------------------------------------------------
 -- Confirmation on load
 --------------------------------------------------
 hs.alert.show("Hammerspoon config loaded")
