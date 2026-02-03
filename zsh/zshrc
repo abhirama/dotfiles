@@ -121,3 +121,18 @@ if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
+export PATH="$HOME/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/ab/.antigravity/antigravity/bin:$PATH"
+
+# Claude CLI with smart model switching (Opus for planning, Sonnet for execution)
+alias claude="claude --model opusplan"
+export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
+
+# SSH to 'd', attaching to a tmux session (creates if missing). Defaults to 'main'.
+function d() {
+    # No outer quotes around the command. 
+    # Let SSH handle the argument passing.
+    ssh -t d tmux new-session -A -s "${1:-main}"
+}

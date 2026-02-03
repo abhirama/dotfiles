@@ -1,0 +1,11 @@
+# --- macOS junk ---
+.DS_Store
+
+# --- Vim ---
+*.swp
+
+# --- Tmux ---
+# Ignore plugins and session state inside your tmux folder
+tmux/plugins/
+tmux/resurrect/
+tmux/continuum/
