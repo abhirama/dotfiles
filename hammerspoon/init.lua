@@ -56,18 +56,24 @@ hs.hotkey.bind(hyper, "r", function()
 end)
 
 --------------------------------------------------
--- Miro Windows Manager: Hyper + Arrows to snap
--- and Hyper + Return to fullscreen
+-- SpoonInstall: Auto-download and manage Spoons
 --------------------------------------------------
 
-hs.loadSpoon("MiroWindowsManager")
+hs.loadSpoon("SpoonInstall")
 
-spoon.MiroWindowsManager:bindHotkeys({
-  up         = { hyper, "up" },     -- top half
-  down       = { hyper, "down" },   -- bottom half
-  left       = { hyper, "left" },   -- left half
-  right      = { hyper, "right" },  -- right half
-  fullscreen = { hyper, "f" },      -- full screen
+--------------------------------------------------
+-- Miro Windows Manager: Hyper + Arrows to snap
+-- and Hyper + F for fullscreen
+--------------------------------------------------
+
+spoon.SpoonInstall:andUse("MiroWindowsManager", {
+  hotkeys = {
+    up         = { hyper, "up" },     -- top half
+    down       = { hyper, "down" },   -- bottom half
+    left       = { hyper, "left" },   -- left half
+    right      = { hyper, "right" },  -- right half
+    fullscreen = { hyper, "f" },      -- full screen
+  }
 })
 
 --------------------------------------------------
