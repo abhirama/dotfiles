@@ -1,5 +1,6 @@
-# Ignore all Spoons (plugins) — they can be reinstalled easily
-Spoons/
+# Ignore all Spoons except SpoonInstall (the bootstrapper)
+Spoons/*
+!Spoons/SpoonInstall.spoon/
 
 # Logs and cache
 *.log
