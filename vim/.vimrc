@@ -8,7 +8,14 @@ endif
 " 2. Plugin List
 call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-sensible'
+  Plug 'madox2/vim-ai'
+  Plug 'madox2/vim-ai-provider-google'
 call plug#end()
+
+" 2a. vim-ai Configuration
+let g:vim_ai_roles_config_file = '~/.config/vim-ai.ini'
+let g:vim_ai_debug = 1
+let g:vim_ai_debug_log_file = '/tmp/vim_ai_debug.log'
 
 " 3. General Settings
 set tabstop=2
