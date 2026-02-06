@@ -158,6 +158,7 @@ See `.gitignore`:
 - After editing `.hammerspoon/*.lua`, press `Hyper+R` to reload
 - Check console for errors: Open Hammerspoon → Console
 - Debug logging available for `hyper_vim.lua` module
+- **Keybindings reference**: `KEYBINDINGS.md` provides a human-readable overview of shortcuts (code in `init.lua` and `hyper_vim.lua` is the source of truth)
 
 ### Vim Plugin Updates
 
@@ -174,6 +175,7 @@ vim +PlugInstall +qall     # Install new plugins
 - **Prefer editing over creating**: Edit existing configs rather than creating new files
 - **Test before committing**: Configs are live-linked via Stow, so test changes immediately
 - **Follow commit patterns**: Check `git log` for commit message style (recent history shows merge commits from feature branches)
+- **Update keybindings documentation**: When adding, removing, or modifying Hammerspoon keybindings, ALWAYS update `hammerspoon/.hammerspoon/KEYBINDINGS.md` to reflect the changes
 
 ### Platform-Specific
 
