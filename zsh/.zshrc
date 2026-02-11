@@ -127,7 +127,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/Users/ab/.antigravity/antigravity/bin:$PATH"
 
 # Claude CLI with smart model switching (Opus for planning, Sonnet for execution)
-alias claude="claude --model opusplan"
+# alias claude="claude --model opusplan"
 export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 
 # SSH to 'd', attaching to a tmux session (creates if missing). Defaults to 'main'.
@@ -136,3 +136,7 @@ function d() {
     # Let SSH handle the argument passing.
     ssh -t d tmux new-session -A -s "${1:-main}"
 }
+export PATH="$HOME/.local/bin:$PATH"
+
+# Entire CLI shell completion
+autoload -Uz compinit && compinit && source <(entire completion zsh)
