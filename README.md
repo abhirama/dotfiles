@@ -104,3 +104,51 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 ### Local Overrides
 
 Machine-specific config and secrets can be placed in `~/.zshrc.local` — it is sourced automatically if present.
+
+## Hammerspoon
+
+macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt + Cmd + Shift`), typically mapped to CapsLock via Karabiner or Raycast.
+
+### Vim Navigation (context-aware)
+
+#### In Raycast
+
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + h` | `Ctrl + h` (navigate left in list) |
+| `Hyper + j` | `Ctrl + j` (navigate down in list) |
+| `Hyper + k` | `Ctrl + k` (navigate up in list) |
+| `Hyper + l` | `Ctrl + l` (navigate right in list) |
+
+#### Global (when Raycast is not visible)
+
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + h` | Left arrow |
+| `Hyper + j` | Down arrow |
+| `Hyper + k` | Up arrow |
+| `Hyper + l` | Right arrow |
+
+### Window Management (MiroWindowsManager)
+
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + Up` | Snap window to top half |
+| `Hyper + Down` | Snap window to bottom half |
+| `Hyper + Left` | Snap window to left half |
+| `Hyper + Right` | Snap window to right half |
+| `Hyper + f` | Fullscreen window |
+| `Hyper + Space` | Move window to next monitor |
+
+### Application Launcher
+
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + Return` | Toggle Raycast |
+
+### Utilities
+
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + v` | Force paste (bypasses paste restrictions) |
+| `Hyper + r` | Reload Hammerspoon config |
