@@ -65,3 +65,42 @@ Leader key is `Space`. Local leader is `,`.
 |----------|------|--------|
 | `Ctrl + s` | Normal | Send chat to AI |
 | `Ctrl + s` | Insert | Exit insert mode and send chat to AI |
+
+## Zsh
+
+Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
+
+### Plugins
+
+| Plugin | Purpose |
+|--------|---------|
+| git | Git aliases and shortcuts |
+| autojump | Fast directory navigation |
+
+### Tools
+
+| Tool | Purpose |
+|------|---------|
+| [nvm](https://github.com/nvm-sh/nvm) | Node version manager |
+| [zoxide](https://github.com/ajeetdsouza/zoxide) | Smarter `cd` command |
+| [fzf](https://github.com/junegunn/fzf) | Fuzzy finder |
+| [pipx](https://pipx.pypa.io/) | Python app installer |
+| [Entire CLI](https://entire.io) | Shell completion via `entire completion zsh` |
+
+### Aliases
+
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `src` | `source ~/.zshrc` | Reload shell config |
+| `vf` | `vim $(fd . \| fzf)` | Fuzzy-find a file and open in Vim |
+| `vz` | `z && vim` | Navigate with zoxide then open Vim |
+
+### Functions
+
+| Function | Usage | Description |
+|----------|-------|-------------|
+| `d [session]` | `d` or `d work` | SSH to host `d` and attach to a tmux session (defaults to `main`) |
+
+### Local Overrides
+
+Machine-specific config and secrets can be placed in `~/.zshrc.local` — it is sourced automatically if present.
