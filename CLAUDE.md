@@ -171,7 +171,7 @@ vim +PlugInstall +qall     # Install new plugins
 
 ### For Claude Code
 
-- **Never commit secrets**: Check for `.env`, token files, or credentials before staging
+- **Never commit secrets**: Before every commit, scan staged files for API keys, tokens, passwords, private keys, and credentials (e.g. `.env`, `*.token`, `*.pem`, `credentials.json`, `~/.ssh/*`). If any secret or sensitive value is detected, STOP and warn the user immediately — do NOT proceed with the commit
 - **Prefer editing over creating**: Edit existing configs rather than creating new files
 - **Test before committing**: Configs are live-linked via Stow, so test changes immediately
 - **Follow commit patterns**: Check `git log` for commit message style (recent history shows merge commits from feature branches)
