@@ -1,8 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$HOME/nand2tetris/tools:$PATH
 
-ZSH_DISABLE_COMPFIX=true
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/ab/.oh-my-zsh"
 
@@ -139,4 +137,4 @@ function d() {
 export PATH="$HOME/.local/bin:$PATH"
 
 # Entire CLI shell completion
-autoload -Uz compinit && compinit && source <(entire completion zsh)
+source <(entire completion zsh)
