@@ -94,7 +94,8 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 | `src` | `source ~/.zshrc` | Reload shell config |
 | `vf` | `vim $(fd . \| fzf)` | Fuzzy-find a file and open in Vim |
 | `vz` | `z && vim` | Navigate with zoxide then open Vim |
-| `dsync` | `rsync -avzP ~/do-sync/ d:~/do-sync/` | Sync local files to remote DigitalOcean droplet |
+| `dpush` | `rsync -avzP ~/do-sync/ d:~/do-sync/` | Push files from local Mac to DigitalOcean |
+| `dpull` | `rsync -avzP d:~/do-sync/ ~/do-sync/` | Pull files from DigitalOcean to local Mac |
 
 ### Functions
 

@@ -7,6 +7,7 @@ alias vf='vim $(fd . | fzf)'
 # Navigate with zoxide then open Vim
 alias vz='z && vim'
 
-# Sync local files to remote digital ocean droplet
+# Push files from local Mac to DigitalOcean
 # -a: archive mode, -v: verbose, -z: compress, -P: show progress/resume
-alias dsync='rsync -avzP ~/do-sync/ d:~/do-sync/'
+alias dpush='rsync -avzP ~/do-sync/ d:~/do-sync/'
+alias dpull='rsync -avzP d:~/do-sync/ ~/do-sync/'
