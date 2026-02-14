@@ -86,15 +86,8 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias src='source  ~/.zshrc'
+# Load aliases from dedicated file
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 # Lazy-load nvm: defers ~690ms of startup cost until node/npm/npx/nvm is first used
 export NVM_DIR="$HOME/.nvm"
@@ -108,10 +101,6 @@ for cmd in nvm node npm npx; do
 done
 
 eval "$(zoxide init zsh)"
-
-#Aliases
-alias vf='vim $(fd . | fzf)'
-alias vz='z && vim'
 
 # Created by `pipx` on 2025-07-13 05:21:23
 export PATH="$PATH:/Users/ab/.local/bin"
@@ -141,6 +130,3 @@ export PATH="$HOME/.local/bin:$PATH"
 # Entire CLI shell completion
 source <(entire completion zsh)
 
-# Sync local files to remote digital ocean droplet
-# -a: archive mode, -v: verbose, -z: compress, -P: show progress/resume
-alias dsync='rsync -avzP ~/do-sync/ d:~/do-sync/'

@@ -1,0 +1,12 @@
+# Reload shell config
+alias src='source  ~/.zshrc'
+
+# Open file via fzf in Vim
+alias vf='vim $(fd . | fzf)'
+
+# Navigate with zoxide then open Vim
+alias vz='z && vim'
+
+# Sync local files to remote digital ocean droplet
+# -a: archive mode, -v: verbose, -z: compress, -P: show progress/resume
+alias dsync='rsync -avzP ~/do-sync/ d:~/do-sync/'

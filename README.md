@@ -87,7 +87,7 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 | [pipx](https://pipx.pypa.io/) | Python app installer |
 | [Entire CLI](https://entire.io) | Shell completion via `entire completion zsh` |
 
-### Aliases
+### Aliases (defined in `~/.zsh_aliases`)
 
 | Alias | Command | Description |
 |-------|---------|-------------|
