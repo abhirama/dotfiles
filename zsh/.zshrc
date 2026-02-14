@@ -140,3 +140,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Entire CLI shell completion
 source <(entire completion zsh)
+
+# Sync local files to remote digital ocean droplet
+# -a: archive mode, -v: verbose, -z: compress, -P: show progress/resume
+alias dsync='rsync -avzP ~/do-sync/ d:~/do-sync/'
