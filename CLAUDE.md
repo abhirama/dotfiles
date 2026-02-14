@@ -175,7 +175,7 @@ vim +PlugInstall +qall     # Install new plugins
 - **Prefer editing over creating**: Edit existing configs rather than creating new files
 - **Test before committing**: Configs are live-linked via Stow, so test changes immediately
 - **Follow commit patterns**: Check `git log` for commit message style (recent history shows merge commits from feature branches)
-- **Keep README.md updated**: When adding, removing, or modifying any config file (`.vimrc`, `.zshrc`, `.tmux.conf`, Hammerspoon configs, etc.), ALWAYS update `README.md` to reflect the changes — including new aliases, keybindings, plugins, tools, or functions
+- **Keep README.md updated atomically**: When adding, removing, or modifying any config file (`.vimrc`, `.zshrc`, `.tmux.conf`, Hammerspoon configs, etc.), ALWAYS update `README.md` in the **same commit** as the config change — including new aliases, keybindings, plugins, tools, or functions. Config changes and their README documentation must be a single atomic unit of work, never separate commits
 
 ### Platform-Specific
 
