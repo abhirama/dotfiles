@@ -140,6 +140,15 @@ function M.start(opts)
       return true
     end
 
+    -- Hyper+D: delete word under cursor via Ctrl+G.
+    -- Ctrl+G is rebound in zsh to a custom widget that combines
+    -- backward-word + kill-word to delete the entire word.
+    if key == "d" then
+      local events = sendCtrlKey("g")
+      if events then return true, events end
+      return true
+    end
+
     -- Ignore keys other than h/j/k/l.
     if key ~= "h" and key ~= "j" and key ~= "k" and key ~= "l" then
       return false

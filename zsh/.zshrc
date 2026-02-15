@@ -80,6 +80,14 @@ source $ZSH/oh-my-zsh.sh
 bindkey '^B' backward-word
 bindkey '^F' forward-word
 
+# Delete word under cursor (Hyper+D sends Ctrl+G via Hammerspoon).
+delete-word-under-cursor() {
+  zle backward-word
+  zle kill-word
+}
+zle -N delete-word-under-cursor
+bindkey '^G' delete-word-under-cursor
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
