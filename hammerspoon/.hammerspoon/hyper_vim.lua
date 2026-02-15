@@ -149,6 +149,21 @@ function M.start(opts)
       return true
     end
 
+    -- Hyper+U/X: delete to beginning/end of line.
+    -- Ctrl+K is zsh's default kill-line (cursor to end).
+    -- Ctrl+U is rebound in zsh from kill-whole-line to backward-kill-line
+    -- (cursor to beginning) so it complements Ctrl+K.
+    if key == "u" then
+      local events = sendCtrlKey("u")
+      if events then return true, events end
+      return true
+    end
+    if key == "x" then
+      local events = sendCtrlKey("k")
+      if events then return true, events end
+      return true
+    end
+
     -- Ignore keys other than h/j/k/l.
     if key ~= "h" and key ~= "j" and key ~= "k" and key ~= "l" then
       return false

@@ -33,6 +33,8 @@ Each directory contains dotfiles that Stow will symlink to `~` (home directory).
   - `Hyper+Space`: Move window to next monitor
 - **Quick Actions**:
   - `Hyper+Return`: Toggle Raycast
+  - `Hyper+U`: Delete to beginning of line (`Ctrl+U`)
+  - `Hyper+X`: Delete to end of line (`Ctrl+K`)
   - `Hyper+V`: Force paste (bypasses paste restrictions)
   - `Hyper+R`: Reload Hammerspoon config
 
