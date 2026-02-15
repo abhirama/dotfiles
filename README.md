@@ -6,6 +6,7 @@ Personal macOS dotfiles managed with [GNU Stow](https://www.gnu.org/software/sto
 
 ```
 dotfiles/
+├── claude/         # Global Claude Code instructions
 ├── hammerspoon/    # macOS automation & window management
 ├── tmux/           # Terminal multiplexer
 ├── vim/            # Vim editor
@@ -18,6 +19,14 @@ dotfiles/
 cd ~/dotfiles
 stow <package>    # e.g. stow vim, stow zsh
 ```
+
+## Claude Code
+
+Global instructions for [Claude Code](https://claude.com/claude-code) that apply to all projects. Symlinks `~/.claude/CLAUDE.md`.
+
+**Rules**:
+- Never commit secrets or sensitive information (API keys, tokens, passwords, private keys)
+- Python projects: always use a virtual environment and maintain `requirements.txt`
 
 ## Vim
 
