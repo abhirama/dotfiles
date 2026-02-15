@@ -154,6 +154,8 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 |----------|--------|
 | `Hyper + a` | Beginning of line (`Ctrl+A`) |
 | `Hyper + e` | End of line (`Ctrl+E`) |
+| `Hyper + b` | Jump one word backward (`Ctrl+B` → zsh `backward-word`) |
+| `Hyper + w` | Jump one word forward (`Ctrl+F` → zsh `forward-word`) |
 
 ### Utilities
 

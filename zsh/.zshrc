@@ -74,6 +74,12 @@ plugins=(git autojump)
 
 source $ZSH/oh-my-zsh.sh
 
+# Rebind Ctrl+B/F from single-char to word movement.
+# Single-char movement is handled by Hyper+H/L (arrow keys via Hammerspoon).
+# Hyper+B sends Ctrl+B and Hyper+W sends Ctrl+F through the eventtap.
+bindkey '^B' backward-word
+bindkey '^F' forward-word
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

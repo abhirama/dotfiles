@@ -122,6 +122,24 @@ function M.start(opts)
       return true
     end
 
+    -- Hyper+B/W: word jumping via Ctrl+B / Ctrl+F.
+    -- Sending Option+Arrow or Esc+letter from an eventtap is unreliable
+    -- because terminals can't properly receive modifier flags or multi-key
+    -- sequences from synthetic events. Instead, we send Ctrl+B/F (which
+    -- works the same way as the proven Ctrl+A/E) and rebind them in zsh
+    -- from single-char movement to word movement (the user already has
+    -- Hyper+H/L for single-char navigation via arrow keys).
+    if key == "b" then
+      local events = sendCtrlKey("b")
+      if events then return true, events end
+      return true
+    end
+    if key == "w" then
+      local events = sendCtrlKey("f")
+      if events then return true, events end
+      return true
+    end
+
     -- Ignore keys other than h/j/k/l.
     if key ~= "h" and key ~= "j" and key ~= "k" and key ~= "l" then
       return false
