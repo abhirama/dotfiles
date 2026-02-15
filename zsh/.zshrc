@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$HOME/nand2tetris/tools:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/ab/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -114,10 +114,9 @@ for cmd in nvm node npm npx; do
   eval "function $cmd() { _load_nvm; $cmd \"\$@\" }"
 done
 
-eval "$(zoxide init zsh)"
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
-# Created by `pipx` on 2025-07-13 05:21:23
-export PATH="$PATH:/Users/ab/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Load local overrides & secrets if present
 if [ -f ~/.zshrc.local ]; then
@@ -126,21 +125,19 @@ fi
 
 export PATH="$HOME/bin:$PATH"
 
-# Added by Antigravity
-export PATH="/Users/ab/.antigravity/antigravity/bin:$PATH"
+# Antigravity (macOS only)
+[ -d "$HOME/.antigravity" ] && export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
-# Claude CLI with smart model switching (Opus for planning, Sonnet for execution)
-# alias claude="claude --model opusplan"
-export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
+# Homebrew PostgreSQL (macOS only)
+[ -d "/usr/local/opt/postgresql@16" ] && export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 
 # SSH to 'd', attaching to a tmux session (creates if missing). Defaults to 'main'.
 function d() {
-    # No outer quotes around the command. 
+    # No outer quotes around the command.
     # Let SSH handle the argument passing.
     ssh -t d tmux new-session -A -s "${1:-main}"
 }
-export PATH="$HOME/.local/bin:$PATH"
 
 # Entire CLI shell completion
-source <(entire completion zsh)
+command -v entire &>/dev/null && source <(entire completion zsh)
 
