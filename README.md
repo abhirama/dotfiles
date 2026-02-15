@@ -148,6 +148,13 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 |----------|--------|
 | `Hyper + Return` | Toggle Raycast |
 
+### Line Navigation
+
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + a` | Beginning of line (`Ctrl+A`) |
+| `Hyper + e` | End of line (`Ctrl+E`) |
+
 ### Utilities
 
 | Shortcut | Action |
