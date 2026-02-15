@@ -100,11 +100,13 @@ end)
 --------------------------------------------------
 
 hs.hotkey.bind(hyper, "a", function()
-  hs.eventtap.keyStroke({ "ctrl" }, "a")
+  hs.eventtap.event.newKeyEvent({ "ctrl" }, "a", true):post()
+  hs.eventtap.event.newKeyEvent({ "ctrl" }, "a", false):post()
 end)
 
 hs.hotkey.bind(hyper, "e", function()
-  hs.eventtap.keyStroke({ "ctrl" }, "e")
+  hs.eventtap.event.newKeyEvent({ "ctrl" }, "e", true):post()
+  hs.eventtap.event.newKeyEvent({ "ctrl" }, "e", false):post()
 end)
 
 --------------------------------------------------
