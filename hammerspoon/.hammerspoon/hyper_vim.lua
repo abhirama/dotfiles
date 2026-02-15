@@ -115,6 +115,13 @@ function M.start(opts)
       return false
     end
 
+    -- Hyper+A/E: line navigation (Ctrl+A/E) — always, regardless of context.
+    if key == "a" or key == "e" then
+      local events = sendCtrlKey(key)
+      if events then return true, events end
+      return true
+    end
+
     -- Ignore keys other than h/j/k/l.
     if key ~= "h" and key ~= "j" and key ~= "k" and key ~= "l" then
       return false
