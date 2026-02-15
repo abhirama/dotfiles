@@ -173,6 +173,8 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 | `Hyper + u` | Delete to beginning of line (`Ctrl+U` → zsh `backward-kill-line`) |
 | `Hyper + x` | Delete to end of line (`Ctrl+K`) |
 
+> **Mnemonic**: **B**ack a word / forward a **W**ord. **D**elete the word. **U**ndo what you typed (wipes left). **X** out the rest (wipes right).
+
 ### Utilities
 
 | Shortcut | Action |
