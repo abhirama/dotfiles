@@ -103,6 +103,10 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 |----------|-------|-------------|
 | `d [session]` | `d` or `d work` | SSH to host `d` and attach to a tmux session (defaults to `main`) |
 
+### Cross-Platform Support
+
+The zsh configuration is portable across macOS and Linux. Platform-specific paths (Homebrew, Antigravity) are guarded behind existence checks, and optional tools (`zoxide`, `entire`) are loaded only when available. Use `~/.zshrc.local` for machine-specific overrides.
+
 ### Local Overrides
 
 Machine-specific config and secrets can be placed in `~/.zshrc.local` — it is sourced automatically if present.
