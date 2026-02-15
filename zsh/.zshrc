@@ -79,6 +79,7 @@ source $ZSH/oh-my-zsh.sh
 # Hyper+B sends Ctrl+B and Hyper+W sends Ctrl+F through the eventtap.
 bindkey '^B' backward-word
 bindkey '^F' forward-word
+bindkey '^U' backward-kill-line
 
 # Delete word under cursor (Hyper+D sends Ctrl+G via Hammerspoon).
 delete-word-under-cursor() {

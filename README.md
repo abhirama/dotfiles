@@ -170,6 +170,8 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 | `Hyper + b` | Jump one word backward (`Ctrl+B` → zsh `backward-word`) |
 | `Hyper + w` | Jump one word forward (`Ctrl+F` → zsh `forward-word`) |
 | `Hyper + d` | Delete word under cursor (`Ctrl+G` → zsh custom widget) |
+| `Hyper + u` | Delete to beginning of line (`Ctrl+U` → zsh `backward-kill-line`) |
+| `Hyper + x` | Delete to end of line (`Ctrl+K`) |
 
 ### Utilities
 
