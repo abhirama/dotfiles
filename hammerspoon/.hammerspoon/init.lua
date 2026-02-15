@@ -95,19 +95,6 @@ end)
 
 
 --------------------------------------------------
--- Hyper + A / Hyper + E: Line navigation
--- Maps CapsLock+A/E to Ctrl+A/E (beginning/end of line)
---------------------------------------------------
-
-hs.hotkey.bind(hyper, "a", function()
-  hs.eventtap.keyStroke({ "ctrl" }, "a")
-end)
-
-hs.hotkey.bind(hyper, "e", function()
-  hs.eventtap.keyStroke({ "ctrl" }, "e")
-end)
-
---------------------------------------------------
 -- Hyper + V: Paste into fields where paste is disabled
 -- Types clipboard contents character by character
 --------------------------------------------------
