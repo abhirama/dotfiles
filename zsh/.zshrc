@@ -74,20 +74,9 @@ plugins=(git autojump)
 
 source $ZSH/oh-my-zsh.sh
 
-# Rebind Ctrl+B/F from single-char to word movement.
-# Single-char movement is handled by Hyper+H/L (arrow keys via Hammerspoon).
-# Hyper+B sends Ctrl+B and Hyper+W sends Ctrl+F through the eventtap.
-bindkey '^B' backward-word
-bindkey '^F' forward-word
+# Change Ctrl+U from kill-whole-line (zsh default) to backward-kill-line,
+# so it only deletes from cursor to beginning of line (complementing Ctrl+K).
 bindkey '^U' backward-kill-line
-
-# Delete word under cursor (Hyper+D sends Ctrl+G via Hammerspoon).
-delete-word-under-cursor() {
-  zle backward-word
-  zle kill-word
-}
-zle -N delete-word-under-cursor
-bindkey '^G' delete-word-under-cursor
 
 # User configuration
 

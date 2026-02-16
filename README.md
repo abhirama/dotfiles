@@ -8,6 +8,7 @@ Personal macOS dotfiles managed with [GNU Stow](https://www.gnu.org/software/sto
 dotfiles/
 ├── claude/         # Global Claude Code instructions
 ├── hammerspoon/    # macOS automation & window management
+├── karabiner/      # Keyboard remapping (Hyper key + word nav)
 ├── tmux/           # Terminal multiplexer
 ├── vim/            # Vim editor
 └── zsh/            # Zsh shell
@@ -121,6 +122,34 @@ The zsh configuration is portable across macOS and Linux. Platform-specific path
 
 Machine-specific config and secrets can be placed in `~/.zshrc.local` — it is sourced automatically if present.
 
+## Karabiner
+
+Keyboard remapping via [Karabiner-Elements](https://karabiner-elements.pqrs.org/).
+
+### Hyper Key
+
+CapsLock is mapped to `Ctrl+Alt+Cmd+Shift` (the "Hyper" key), used as a modifier for Hammerspoon and Karabiner shortcuts.
+
+### Word Navigation (via Karabiner)
+
+These shortcuts are handled by Karabiner at the HID level (not Hammerspoon) so that iTerm2's Esc+ setting translates them into Meta escape sequences. This makes them work in both zsh and TUI apps like Claude Code.
+
+| Shortcut | Output | Action |
+|----------|--------|--------|
+| `Hyper + b` | `Option+B` | Jump one word backward |
+| `Hyper + w` | `Option+F` | Jump one word forward |
+| `Hyper + d` | `Right`, `Option+B`, `Option+D` | Delete word under cursor |
+
+### iTerm2 Setup (required)
+
+Set the Left Option key to **Esc+** so that Option+letter produces Meta escape sequences instead of special characters (e.g., `\eb` instead of `∫`):
+
+1. Open **iTerm2 → Preferences** (Cmd+,)
+2. Go to **Profiles → Keys**
+3. Set **Left Option Key** to **Esc+**
+
+This is required for the Karabiner word navigation shortcuts above. It also enables physical Option+Left/Right/Backspace for word navigation in all terminal apps.
+
 ## Tmux
 
 Terminal multiplexer with session persistence. Plugin manager: [TPM](https://github.com/tmux-plugins/tpm) (auto-bootstraps if missing).
@@ -181,10 +210,10 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 |----------|--------|
 | `Hyper + a` | Beginning of line (`Ctrl+A`) |
 | `Hyper + e` | End of line (`Ctrl+E`) |
-| `Hyper + b` | Jump one word backward (`Ctrl+B` → zsh `backward-word`) |
-| `Hyper + w` | Jump one word forward (`Ctrl+F` → zsh `forward-word`) |
-| `Hyper + d` | Delete word under cursor (`Ctrl+G` → zsh custom widget) |
-| `Hyper + u` | Delete to beginning of line (`Ctrl+U` → zsh `backward-kill-line`) |
+| `Hyper + b` | Jump one word backward (Karabiner → `Option+B`) |
+| `Hyper + w` | Jump one word forward (Karabiner → `Option+F`) |
+| `Hyper + d` | Delete word under cursor (Karabiner → `Option+B` then `Option+D`) |
+| `Hyper + u` | Delete to beginning of line (`Ctrl+U`) |
 | `Hyper + x` | Delete to end of line (`Ctrl+K`) |
 
 > **Mnemonic**: **B**ack a word / forward a **W**ord. **D**elete the word. **U**ndo what you typed (wipes left). **X** out the rest (wipes right).
