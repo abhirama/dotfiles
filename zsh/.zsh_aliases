@@ -11,3 +11,6 @@ alias vz='z && vim'
 # -a: archive mode, -v: verbose, -z: compress, -P: show progress/resume
 alias dpush='rsync -avzP ~/do-sync/ d:~/do-sync/'
 alias dpull='rsync -avzP d:~/do-sync/ ~/do-sync/'
+
+# Launch Claude Code with dangerously skip permissions
+alias yoclau='claude --dangerously-skip-permissions'
