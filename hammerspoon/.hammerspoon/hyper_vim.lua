@@ -122,32 +122,11 @@ function M.start(opts)
       return true
     end
 
-    -- Hyper+B/W: word jumping via Ctrl+B / Ctrl+F.
-    -- Sending Option+Arrow or Esc+letter from an eventtap is unreliable
-    -- because terminals can't properly receive modifier flags or multi-key
-    -- sequences from synthetic events. Instead, we send Ctrl+B/F (which
-    -- works the same way as the proven Ctrl+A/E) and rebind them in zsh
-    -- from single-char movement to word movement (the user already has
-    -- Hyper+H/L for single-char navigation via arrow keys).
-    if key == "b" then
-      local events = sendCtrlKey("b")
-      if events then return true, events end
-      return true
-    end
-    if key == "w" then
-      local events = sendCtrlKey("f")
-      if events then return true, events end
-      return true
-    end
-
-    -- Hyper+D: delete word under cursor via Ctrl+G.
-    -- Ctrl+G is rebound in zsh to a custom widget that combines
-    -- backward-word + kill-word to delete the entire word.
-    if key == "d" then
-      local events = sendCtrlKey("g")
-      if events then return true, events end
-      return true
-    end
+    -- Hyper+B/W/D: word navigation and deletion.
+    -- These are handled by Karabiner at the HID level (not Hammerspoon),
+    -- which outputs Left Option+key events with proper device flags.
+    -- iTerm2's Esc+ setting then translates them into Meta escape sequences
+    -- (\eb, \ef, \ed) that work in both zsh and TUI apps like Claude Code.
 
     -- Hyper+U/X: delete to beginning/end of line.
     -- Ctrl+K is zsh's default kill-line (cursor to end).
