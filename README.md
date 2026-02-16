@@ -121,6 +121,19 @@ The zsh configuration is portable across macOS and Linux. Platform-specific path
 
 Machine-specific config and secrets can be placed in `~/.zshrc.local` — it is sourced automatically if present.
 
+## Tmux
+
+Terminal multiplexer with session persistence. Plugin manager: [TPM](https://github.com/tmux-plugins/tpm) (auto-bootstraps if missing).
+
+### Features
+
+| Feature | Detail |
+|---------|--------|
+| Default shell | `/bin/zsh` |
+| Mouse support | Enabled |
+| Scrollback | 10,000 lines |
+| Colors | 256-color (`screen-256color`) |
+
 ## Hammerspoon
 
 macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt + Cmd + Shift`), typically mapped to CapsLock via Karabiner or Raycast.
