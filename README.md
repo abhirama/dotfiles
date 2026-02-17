@@ -112,7 +112,8 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 
 | Function | Usage | Description |
 |----------|-------|-------------|
-| `d [session]` | `d` or `d work` | SSH to host `d` and attach to a tmux session (defaults to `main`) |
+| `d [session]` | `d` or `d work` | SSH to host `d` and attach to a tmux session (defaults to `main`). Sets iTerm2 tab/pane title to session name |
+| `d -l` | `d -l` | List active tmux sessions on remote host `d` |
 
 ### Cross-Platform Support
 

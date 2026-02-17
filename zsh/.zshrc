@@ -122,10 +122,16 @@ export PATH="$HOME/bin:$PATH"
 [ -d "/usr/local/opt/postgresql@16" ] && export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 
 # SSH to 'd', attaching to a tmux session (creates if missing). Defaults to 'main'.
+# Sets iTerm2 tab/pane title to the session name for easy identification.
+# Use -l to list active tmux sessions on the remote host.
 function d() {
-    # No outer quotes around the command.
-    # Let SSH handle the argument passing.
-    ssh -t d tmux new-session -A -s "${1:-main}"
+    if [[ "$1" == "-l" ]]; then
+        ssh d tmux list-sessions
+        return
+    fi
+    local session="${1:-main}"
+    printf '\e]0;%s\a' "$session"
+    ssh -t d tmux new-session -A -s "$session"
 }
 
 # Entire CLI shell completion
