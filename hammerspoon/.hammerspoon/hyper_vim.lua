@@ -61,6 +61,21 @@ local function isRaycastVisible()
   return false
 end
 
+-- Terminal app detection for context-aware shortcuts.
+-- B/W/D use Karabiner's frontmost_application_if for the same purpose;
+-- U/X are handled here in Hammerspoon and need this Lua-side check.
+local terminalBundleIDs = {
+  ["com.googlecode.iterm2"] = true,
+  ["com.apple.Terminal"] = true,
+}
+
+local function isTerminalApp()
+  local app = hs.application.frontmostApplication()
+  if not app then return false end
+  local bid = app:bundleID()
+  return bid ~= nil and terminalBundleIDs[bid] == true
+end
+
 -- Helper to synthesize Ctrl+key press/release events.
 -- We use explicit newKeyEvent instead of keyStroke for finer control
 -- and to avoid focus/timing issues seen in early attempts.
@@ -68,6 +83,15 @@ local function sendCtrlKey(key)
   return {
     event.newKeyEvent({ "ctrl" }, key, true),
     event.newKeyEvent({ "ctrl" }, key, false),
+  }
+end
+
+-- Helper to synthesize Cmd+key press/release events.
+-- Used for macOS-native text editing shortcuts (e.g. Cmd+Backspace).
+local function sendCmdKey(key)
+  return {
+    event.newKeyEvent({ "cmd" }, key, true),
+    event.newKeyEvent({ "cmd" }, key, false),
   }
 end
 
@@ -128,15 +152,23 @@ function M.start(opts)
     -- iTerm2's Esc+ setting then translates them into Meta escape sequences
     -- (\eb, \ef, \ed) that work in both zsh and TUI apps like Claude Code.
 
-    -- Hyper+U/X: delete to beginning/end of line.
-    -- Ctrl+K is zsh's default kill-line (cursor to end).
-    -- Ctrl+U is rebound in zsh from kill-whole-line to backward-kill-line
-    -- (cursor to beginning) so it complements Ctrl+K.
+    -- Hyper+U: delete to beginning of line (context-aware).
+    -- Terminal: Ctrl+U (zsh backward-kill-line).
+    -- Other apps: Cmd+Backspace (macOS delete-to-line-start).
     if key == "u" then
-      local events = sendCtrlKey("u")
+      local events
+      if isTerminalApp() then
+        events = sendCtrlKey("u")
+      else
+        events = sendCmdKey("delete")
+      end
       if events then return true, events end
       return true
     end
+
+    -- Hyper+X: delete to end of line.
+    -- Ctrl+K works in both terminals (zsh kill-line) and Cocoa text fields
+    -- (deleteToEndOfParagraph:), so no context switch is needed.
     if key == "x" then
       local events = sendCtrlKey("k")
       if events then return true, events end

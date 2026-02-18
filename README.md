@@ -133,13 +133,13 @@ CapsLock is mapped to `Ctrl+Alt+Cmd+Shift` (the "Hyper" key), used as a modifier
 
 ### Word Navigation (via Karabiner)
 
-These shortcuts are handled by Karabiner at the HID level (not Hammerspoon) so that iTerm2's Esc+ setting translates them into Meta escape sequences. This makes them work in both zsh and TUI apps like Claude Code.
+These shortcuts are handled by Karabiner at the HID level (not Hammerspoon) so that iTerm2's Esc+ setting translates them into Meta escape sequences. They are **context-aware** — terminal apps get Meta sequences for readline/TUI compatibility, while other apps (browsers, editors) get macOS-native word navigation.
 
-| Shortcut | Output | Action |
-|----------|--------|--------|
-| `Hyper + b` | `Option+B` | Jump one word backward |
-| `Hyper + w` | `Option+F` | Jump one word forward |
-| `Hyper + d` | `Right`, `Option+B`, `Option+D` | Delete word under cursor |
+| Shortcut | Terminal (iTerm2, Terminal) | Other Apps |
+|----------|---------------------------|------------|
+| `Hyper + b` | `Option+B` (Meta `\eb`, word backward) | `Option+Left` (word backward) |
+| `Hyper + w` | `Option+F` (Meta `\ef`, word forward) | `Option+Right` (word forward) |
+| `Hyper + d` | `Right`, `Option+B`, `Option+D` (delete word) | `Option+Backspace` (delete word backward) |
 
 ### iTerm2 Setup (required)
 
@@ -207,15 +207,15 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 
 ### Line Navigation
 
-| Shortcut | Action |
-|----------|--------|
-| `Hyper + a` | Beginning of line (`Ctrl+A`) |
-| `Hyper + e` | End of line (`Ctrl+E`) |
-| `Hyper + b` | Jump one word backward (Karabiner → `Option+B`) |
-| `Hyper + w` | Jump one word forward (Karabiner → `Option+F`) |
-| `Hyper + d` | Delete word under cursor (Karabiner → `Option+B` then `Option+D`) |
-| `Hyper + u` | Delete to beginning of line (`Ctrl+U`) |
-| `Hyper + x` | Delete to end of line (`Ctrl+K`) |
+| Shortcut | Terminal (iTerm2, Terminal) | Other Apps |
+|----------|---------------------------|------------|
+| `Hyper + a` | `Ctrl+A` (beginning of line) | `Ctrl+A` (beginning of line) |
+| `Hyper + e` | `Ctrl+E` (end of line) | `Ctrl+E` (end of line) |
+| `Hyper + b` | `Option+B` — word backward (Karabiner) | `Option+Left` — word backward (Karabiner) |
+| `Hyper + w` | `Option+F` — word forward (Karabiner) | `Option+Right` — word forward (Karabiner) |
+| `Hyper + d` | `Right`, `Opt+B`, `Opt+D` — delete word (Karabiner) | `Option+Backspace` — delete word backward (Karabiner) |
+| `Hyper + u` | `Ctrl+U` (delete to beginning of line) | `Cmd+Backspace` (delete to beginning of line) |
+| `Hyper + x` | `Ctrl+K` (delete to end of line) | `Ctrl+K` (delete to end of line) |
 
 > **Mnemonic**: **B**ack a word / forward a **W**ord. **D**elete the word. **U**ndo what you typed (wipes left). **X** out the rest (wipes right).
 
