@@ -204,6 +204,7 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 | Shortcut | Action |
 |----------|--------|
 | `Hyper + Return` | Toggle Raycast |
+| `Hyper + '` | Switch to last used app (`Cmd+Tab`) |
 
 ### Line Navigation
 
