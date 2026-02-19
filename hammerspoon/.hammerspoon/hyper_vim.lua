@@ -76,6 +76,43 @@ local function isTerminalApp()
   return bid ~= nil and terminalBundleIDs[bid] == true
 end
 
+-- iTerm2-specific detection for tab management shortcuts.
+-- These use iTerm2's AppleScript API and only apply when iTerm2 is frontmost.
+local function isITerm()
+  local app = hs.application.frontmostApplication()
+  if not app then return false end
+  return app:bundleID() == "com.googlecode.iterm2"
+end
+
+-- Cycle iTerm2 tabs with wrap-around (circular buffer).
+-- Uses AppleScript because native Cmd+Shift+]/[ doesn't wrap at boundaries.
+-- Deferred via hs.timer.doAfter(0, ...) to avoid blocking the eventtap callback.
+local function iTermCycleTab(direction)
+  local delta = direction == "next" and 1 or -1
+  local script = string.format([[
+    tell application "iTerm2"
+      if (count of windows) is 0 then return
+      tell current window
+        set tabCount to count of tabs
+        if tabCount is less than or equal to 1 then return
+        set curTab to current tab
+        set curIdx to 1
+        repeat with i from 1 to tabCount
+          if tab i is curTab then
+            set curIdx to i
+            exit repeat
+          end if
+        end repeat
+        set nextIdx to curIdx + (%d)
+        if nextIdx < 1 then set nextIdx to tabCount
+        if nextIdx > tabCount then set nextIdx to 1
+        select tab nextIdx
+      end tell
+    end tell
+  ]], delta)
+  hs.osascript.applescript(script)
+end
+
 -- Helper to synthesize Ctrl+key press/release events.
 -- We use explicit newKeyEvent instead of keyStroke for finer control
 -- and to avoid focus/timing issues seen in early attempts.
@@ -173,6 +210,37 @@ function M.start(opts)
       local events = sendCtrlKey("k")
       if events then return true, events end
       return true
+    end
+
+    -- Hyper+T/N/P/Q: iTerm2 tab management (only when iTerm2 is frontmost).
+    -- T = new tab, N = next tab (wrap), P = previous tab (wrap), Q = close tab.
+    -- These pass through to other apps so their default Hyper bindings
+    -- (if any) are preserved.
+    if key == "t" then
+      if isITerm() then
+        local events = sendCmdKey("t")
+        if events then return true, events end
+        return true
+      end
+      return false
+    end
+
+    if key == "q" then
+      if isITerm() then
+        local events = sendCmdKey("w")
+        if events then return true, events end
+        return true
+      end
+      return false
+    end
+
+    if key == "n" or key == "p" then
+      if isITerm() then
+        local dir = key == "n" and "next" or "prev"
+        hs.timer.doAfter(0, function() iTermCycleTab(dir) end)
+        return true
+      end
+      return false
     end
 
     -- Ignore keys other than h/j/k/l.
