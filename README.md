@@ -219,6 +219,17 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 
 > **Mnemonic**: **B**ack a word / forward a **W**ord. **D**elete the word. **U**ndo what you typed (wipes left). **X** out the rest (wipes right).
 
+### iTerm2 Tab Management
+
+These shortcuts only activate when iTerm2 is the frontmost app. Tab cycling wraps around (circular buffer).
+
+| Shortcut | Action | Mnemonic |
+|----------|--------|----------|
+| `Hyper + t` | New tab | **T**ab |
+| `Hyper + n` | Next tab (wraps around) | **N**ext |
+| `Hyper + p` | Previous tab (wraps around) | **P**revious |
+| `Hyper + q` | Close tab | **Q**uit |
+
 ### Utilities
 
 | Shortcut | Action |
