@@ -84,6 +84,14 @@ local function isITerm()
   return app:bundleID() == "com.googlecode.iterm2"
 end
 
+-- Chrome detection for tab management shortcuts.
+-- Chrome has a clean AppleScript API with direct `active tab index` access.
+local function isChrome()
+  local app = hs.application.frontmostApplication()
+  if not app then return false end
+  return app:bundleID() == "com.google.Chrome"
+end
+
 -- Cycle iTerm2 tabs with wrap-around (circular buffer).
 -- Uses AppleScript because native Cmd+Shift+]/[ doesn't wrap at boundaries.
 -- Deferred via hs.timer.doAfter(0, ...) to avoid blocking the eventtap callback.
@@ -107,6 +115,28 @@ local function iTermCycleTab(direction)
         if nextIdx < 1 then set nextIdx to tabCount
         if nextIdx > tabCount then set nextIdx to 1
         select tab nextIdx
+      end tell
+    end tell
+  ]], delta)
+  hs.osascript.applescript(script)
+end
+
+-- Cycle Chrome tabs with wrap-around (circular buffer).
+-- Chrome's AppleScript API exposes `active tab index` directly,
+-- making this simpler than iTerm2's tab cycling.
+local function chromeCycleTab(direction)
+  local delta = direction == "next" and 1 or -1
+  local script = string.format([[
+    tell application "Google Chrome"
+      if (count of windows) is 0 then return
+      tell front window
+        set tabCount to count of tabs
+        if tabCount is less than or equal to 1 then return
+        set curIdx to active tab index
+        set nextIdx to curIdx + (%d)
+        if nextIdx < 1 then set nextIdx to tabCount
+        if nextIdx > tabCount then set nextIdx to 1
+        set active tab index to nextIdx
       end tell
     end tell
   ]], delta)
@@ -212,12 +242,13 @@ function M.start(opts)
       return true
     end
 
-    -- Hyper+T/N/P/Q: iTerm2 tab management (only when iTerm2 is frontmost).
+    -- Hyper+T/N/P/Q: Tab management for iTerm2 and Chrome.
     -- T = new tab, N = next tab (wrap), P = previous tab (wrap), Q = close tab.
+    -- Context-aware: only activates when iTerm2 or Chrome is frontmost.
     -- These pass through to other apps so their default Hyper bindings
     -- (if any) are preserved.
     if key == "t" then
-      if isITerm() then
+      if isITerm() or isChrome() then
         local events = sendCmdKey("t")
         if events then return true, events end
         return true
@@ -226,7 +257,7 @@ function M.start(opts)
     end
 
     if key == "q" then
-      if isITerm() then
+      if isITerm() or isChrome() then
         local events = sendCmdKey("w")
         if events then return true, events end
         return true
@@ -235,9 +266,13 @@ function M.start(opts)
     end
 
     if key == "n" or key == "p" then
+      local dir = key == "n" and "next" or "prev"
       if isITerm() then
-        local dir = key == "n" and "next" or "prev"
         hs.timer.doAfter(0, function() iTermCycleTab(dir) end)
+        return true
+      end
+      if isChrome() then
+        hs.timer.doAfter(0, function() chromeCycleTab(dir) end)
         return true
       end
       return false
