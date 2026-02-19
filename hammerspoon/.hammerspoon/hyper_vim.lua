@@ -242,6 +242,13 @@ function M.start(opts)
       return true
     end
 
+    -- Hyper+': app switching (Cmd+Tab) — switch to most recently used app.
+    if key == "'" then
+      local events = sendCmdKey("tab")
+      if events then return true, events end
+      return true
+    end
+
     -- Hyper+T/N/P/Q: Tab management for iTerm2 and Chrome.
     -- T = new tab, N = next tab (wrap), P = previous tab (wrap), Q = close tab.
     -- Context-aware: only activates when iTerm2 or Chrome is frontmost.
