@@ -137,9 +137,9 @@ These shortcuts are handled by Karabiner at the HID level (not Hammerspoon) so t
 
 | Shortcut | Terminal (iTerm2, Terminal) | Other Apps |
 |----------|---------------------------|------------|
-| `Hyper + b` | `Option+B` (Meta `\eb`, word backward) | `Option+Left` (word backward) |
-| `Hyper + w` | `Option+F` (Meta `\ef`, word forward) | `Option+Right` (word forward) |
-| `Hyper + d` | `Right`, `Option+B`, `Option+D` (delete word) | `Option+Backspace` (delete word backward) |
+| `Hyper + b` | `Option+B` (Meta `\eb`, word backward to delimiter) | `Option+Left` (word backward) |
+| `Hyper + w` | `Option+F` (Meta `\ef`, word forward to delimiter) | `Option+Right` (word forward) |
+| `Hyper + d` | `Ctrl+W` (delete word backward) | `Option+Backspace` (delete word backward) |
 
 ### iTerm2 Setup (required)
 
@@ -212,9 +212,9 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 |----------|---------------------------|------------|
 | `Hyper + a` | `Ctrl+A` (beginning of line) | `Ctrl+A` (beginning of line) |
 | `Hyper + e` | `Ctrl+E` (end of line) | `Ctrl+E` (end of line) |
-| `Hyper + b` | `Option+B` — word backward (Karabiner) | `Option+Left` — word backward (Karabiner) |
-| `Hyper + w` | `Option+F` — word forward (Karabiner) | `Option+Right` — word forward (Karabiner) |
-| `Hyper + d` | `Right`, `Opt+B`, `Opt+D` — delete word (Karabiner) | `Option+Backspace` — delete word backward (Karabiner) |
+| `Hyper + b` | `Option+B` — word backward to delimiter (Karabiner + zsh widget) | `Option+Left` — word backward (Karabiner) |
+| `Hyper + w` | `Option+F` — word forward to delimiter (Karabiner + zsh widget) | `Option+Right` — word forward (Karabiner) |
+| `Hyper + d` | `Ctrl+W` — delete word backward (Karabiner) | `Option+Backspace` — delete word backward (Karabiner) |
 | `Hyper + u` | `Ctrl+U` (delete to beginning of line) | `Cmd+Backspace` (delete to beginning of line) |
 | `Hyper + x` | `Ctrl+K` (delete to end of line) | `Ctrl+K` (delete to end of line) |
 
