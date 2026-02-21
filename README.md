@@ -131,6 +131,8 @@ Machine-specific config and secrets can be placed in `~/.zshrc.local` — it is 
 
 Keyboard remapping via [Karabiner-Elements](https://karabiner-elements.pqrs.org/).
 
+> **Why not Stow?** Karabiner-Elements [overwrites symlinks](https://github.com/pqrs-org/Karabiner-Elements/issues/3248) with regular files whenever it saves config — so `stow karabiner` breaks on the next config write. The source of truth lives in `karabiner/.config/karabiner/karabiner.json` in this repo, and the `karabiner-sync` shell function handles bidirectional sync between the repo and `~/.config/karabiner/`.
+
 ### Hyper Key
 
 CapsLock is mapped to `Ctrl+Alt+Cmd+Shift` (the "Hyper" key), used as a modifier for Hammerspoon and Karabiner shortcuts.
