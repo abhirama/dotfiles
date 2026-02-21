@@ -107,6 +107,7 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 | `dpush` | `rsync -avzP ~/do-sync/ d:~/do-sync/` | Push files from local Mac to DigitalOcean |
 | `dpull` | `rsync -avzP d:~/do-sync/ ~/do-sync/` | Pull files from DigitalOcean to local Mac |
 | `yoclau` | `claude --dangerously-skip-permissions` | Launch Claude Code with dangerously skip permissions |
+| `tailscale` | `/Applications/Tailscale.app/Contents/MacOS/Tailscale` | Tailscale CLI (macOS app bundle) |
 
 ### Functions
 
