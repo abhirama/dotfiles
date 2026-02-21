@@ -164,5 +164,35 @@ function d() {
     ssh -t d tmux new-session -A -s "$session"
 }
 
+# Bidirectional Karabiner config sync.
+# Karabiner-Elements overwrites symlinks, so Stow can't manage this config.
+# Usage: karabiner-sync         (show diff and choose direction)
+#        karabiner-sync push    (dotfiles → karabiner)
+#        karabiner-sync pull    (karabiner → dotfiles)
+function karabiner-sync() {
+    local dotfile=~/dotfiles/karabiner/.config/karabiner/karabiner.json
+    local config=~/.config/karabiner/karabiner.json
+
+    if diff -q "$dotfile" "$config" &>/dev/null; then
+        echo "Already in sync"
+        return
+    fi
+
+    local choice="$1"
+    if [[ -z "$choice" ]]; then
+        diff --color "$dotfile" "$config"
+        echo ""
+        echo "  push) dotfiles → karabiner"
+        echo "  pull) karabiner → dotfiles"
+        read "choice?Direction [push/pull]: "
+    fi
+
+    case "$choice" in
+        push) cp "$dotfile" "$config" && echo "Pushed: dotfiles → karabiner" ;;
+        pull) cp "$config" "$dotfile" && echo "Pulled: karabiner → dotfiles" ;;
+        *) echo "Aborted" ;;
+    esac
+}
+
 # Entire CLI shell completion
 command -v entire &>/dev/null && source <(entire completion zsh)

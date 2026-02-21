@@ -115,6 +115,9 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 |----------|-------|-------------|
 | `d [session]` | `d` or `d work` | SSH to host `d` and attach to a tmux session (defaults to `main`). Sets iTerm2 tab/pane title to session name |
 | `d -l` | `d -l` | List active tmux sessions on remote host `d` |
+| `karabiner-sync` | `karabiner-sync` | Show diff between dotfiles and live Karabiner config, choose sync direction |
+| `karabiner-sync push` | `karabiner-sync push` | Copy dotfiles config → Karabiner |
+| `karabiner-sync pull` | `karabiner-sync pull` | Copy live Karabiner config → dotfiles |
 
 ### Cross-Platform Support
 
@@ -141,6 +144,12 @@ These shortcuts are handled by Karabiner at the HID level (not Hammerspoon) so t
 | `Hyper + b` | `Option+B` (Meta `\eb`, word backward to delimiter) | `Option+Left` (word backward) |
 | `Hyper + w` | `Option+F` (Meta `\ef`, word forward to delimiter) | `Option+Right` (word forward) |
 | `Hyper + d` | `Ctrl+W` (delete word backward) | `Option+Backspace` (delete word backward) |
+
+### Window Switching (via Karabiner)
+
+| Shortcut | Action |
+|----------|--------|
+| `Hyper + /` | `` Cmd+` `` (cycle windows of current app) |
 
 ### iTerm2 Setup (required)
 
@@ -206,6 +215,7 @@ macOS automation and window management. Requires the **Hyper key** (`Ctrl + Alt 
 |----------|--------|
 | `Hyper + Return` | Toggle Raycast |
 | `Hyper + '` | Switch to last used app (`Cmd+Tab`) |
+| `Hyper + /` | Switch to next window of current app (`` Cmd+` ``, via Karabiner) |
 
 ### Line Navigation
 
