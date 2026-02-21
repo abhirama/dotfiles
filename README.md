@@ -115,6 +115,8 @@ Framework: [oh-my-zsh](https://ohmyz.sh/) with the `robbyrussell` theme.
 |----------|-------|-------------|
 | `d [session]` | `d` or `d work` | SSH to host `d` and attach to a tmux session (defaults to `main`). Sets iTerm2 tab/pane title to session name |
 | `d -l` | `d -l` | List active tmux sessions on remote host `d` |
+| `m [session]` | `m` or `m work` | Mosh to host `d` and attach to a tmux session (defaults to `main`). Sets iTerm2 tab/pane title to session name |
+| `m -l` | `m -l` | List active tmux sessions on remote host `d` |
 | `karabiner-sync` | `karabiner-sync` | Show diff between dotfiles and live Karabiner config, choose sync direction |
 | `karabiner-sync push` | `karabiner-sync push` | Copy dotfiles config → Karabiner |
 | `karabiner-sync pull` | `karabiner-sync pull` | Copy live Karabiner config → dotfiles |
