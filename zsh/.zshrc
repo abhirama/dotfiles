@@ -164,6 +164,18 @@ function d() {
     ssh -t d tmux new-session -A -s "$session"
 }
 
+# Mosh equivalent of d(). Uses mosh for the connection but still uses ssh for
+# listing sessions since mosh doesn't support non-interactive commands.
+function m() {
+    if [[ "$1" == "-l" ]]; then
+        ssh d tmux list-sessions
+        return
+    fi
+    local session="${1:-main}"
+    printf '\e]0;%s\a' "$session"
+    mosh d -- tmux new-session -A -s "$session"
+}
+
 # Bidirectional Karabiner config sync.
 # Karabiner-Elements overwrites symlinks, so Stow can't manage this config.
 # Usage: karabiner-sync         (show diff and choose direction)

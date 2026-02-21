@@ -97,6 +97,7 @@ Each directory contains dotfiles that Stow will symlink to `~` (home directory).
 - `vz`: Navigate with zoxide and open Vim
 - `claude`: Launch Claude CLI with Opus planning mode
 - `d [session]`: SSH to host 'd' with tmux session (defaults to 'main')
+- `m [session]`: Mosh to host 'd' with tmux session (defaults to 'main')
 
 **Local Overrides**: Sources `~/.zshrc.local` for machine-specific configs/secrets
 
