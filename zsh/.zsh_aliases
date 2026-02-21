@@ -14,3 +14,6 @@ alias dpull='rsync -avzP d:~/do-sync/ ~/do-sync/'
 
 # Launch Claude Code with dangerously skip permissions
 alias yoclau='claude --dangerously-skip-permissions'
+
+# Tailscale CLI (macOS app bundle)
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"

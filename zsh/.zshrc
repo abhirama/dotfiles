@@ -166,5 +166,3 @@ function d() {
 
 # Entire CLI shell completion
 command -v entire &>/dev/null && source <(entire completion zsh)
-
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
