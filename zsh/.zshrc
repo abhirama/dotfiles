@@ -78,6 +78,36 @@ source $ZSH/oh-my-zsh.sh
 # so it only deletes from cursor to beginning of line (complementing Ctrl+K).
 bindkey '^U' backward-kill-line
 
+# Custom backward word: lands on the space/delimiter before the word
+# instead of on the first character (default Meta-b behavior).
+# Used by Hyper+B for word-boundary-aligned navigation.
+backward-word-boundary() {
+    (( CURSOR == 0 )) && return
+    zle backward-word
+    (( CURSOR > 0 )) && (( CURSOR-- ))
+}
+zle -N backward-word-boundary
+bindkey '\eb' backward-word-boundary
+
+# Custom forward word: lands on the first space/delimiter after the word
+# instead of on the first character of the next word (default Meta-f behavior).
+# Used by Hyper+W for word-boundary-aligned navigation.
+forward-word-boundary() {
+    local len=${#BUFFER}
+    (( CURSOR >= len )) && return
+    # Phase 1: skip non-word characters (spaces/delimiters)
+    while (( CURSOR < len )) && [[ "${BUFFER:$CURSOR:1}" != [[:alnum:]] ]]; do
+        (( CURSOR++ ))
+    done
+    # Phase 2: skip word characters (alphanumeric)
+    while (( CURSOR < len )) && [[ "${BUFFER:$CURSOR:1}" == [[:alnum:]] ]]; do
+        (( CURSOR++ ))
+    done
+    # Cursor is now on the first non-alnum char after the word
+}
+zle -N forward-word-boundary
+bindkey '\ef' forward-word-boundary
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -137,3 +167,4 @@ function d() {
 # Entire CLI shell completion
 command -v entire &>/dev/null && source <(entire completion zsh)
 
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"

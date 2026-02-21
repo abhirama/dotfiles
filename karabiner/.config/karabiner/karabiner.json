@@ -82,7 +82,7 @@
                         ]
                     },
                     {
-                        "description": "Hyper+D → delete word (terminal: Right+Opt+B+Opt+D, other: Option+Backspace)",
+                        "description": "Hyper+D → delete word backward (terminal: Ctrl+W, other: Option+Backspace)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -98,11 +98,7 @@
                                     "key_code": "d",
                                     "modifiers": { "mandatory": ["left_control", "left_option", "left_command", "left_shift"] }
                                 },
-                                "to": [
-                                    { "key_code": "right_arrow" },
-                                    { "key_code": "b", "modifiers": ["left_option"] },
-                                    { "key_code": "d", "modifiers": ["left_option"] }
-                                ],
+                                "to": [{ "key_code": "w", "modifiers": ["left_control"] }],
                                 "type": "basic"
                             },
                             {

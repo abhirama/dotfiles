@@ -214,10 +214,12 @@ function M.start(opts)
     end
 
     -- Hyper+B/W/D: word navigation and deletion.
-    -- These are handled by Karabiner at the HID level (not Hammerspoon),
-    -- which outputs Left Option+key events with proper device flags.
-    -- iTerm2's Esc+ setting then translates them into Meta escape sequences
-    -- (\eb, \ef, \ed) that work in both zsh and TUI apps like Claude Code.
+    -- These are handled by Karabiner at the HID level (not Hammerspoon).
+    -- Terminal: B sends Option+B → Meta \eb (custom zsh widget lands on
+    -- delimiter before word), W sends Option+F → Meta \ef (custom zsh
+    -- widget lands on delimiter after word), D sends Ctrl+W
+    -- (backward-kill-word).
+    -- Other apps: B/W use Option+Arrow, D uses Option+Backspace.
 
     -- Hyper+U: delete to beginning of line (context-aware).
     -- Terminal: Ctrl+U (zsh backward-kill-line).
