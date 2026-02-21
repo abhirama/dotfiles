@@ -251,6 +251,10 @@ function M.start(opts)
       return true
     end
 
+    -- Hyper+/: window switching (Cmd+`) — handled by Karabiner at the HID
+    -- level because the slash key with Hyper (which includes shift) doesn't
+    -- reach Hammerspoon's eventtap.
+
     -- Hyper+T/N/P/Q: Tab management for iTerm2 and Chrome.
     -- T = new tab, N = next tab (wrap), P = previous tab (wrap), Q = close tab.
     -- Context-aware: only activates when iTerm2 or Chrome is frontmost.
